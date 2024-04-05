@@ -1,5 +1,7 @@
 import express from "express";
+
 import { checkJwt } from "../middlewares/auth";
+
 import {
   createPost,
   getAllPosts,

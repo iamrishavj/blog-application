@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import Post from "../models/Post";
 
 export const createPost = async (

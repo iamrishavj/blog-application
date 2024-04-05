@@ -1,18 +1,14 @@
 import express, { ErrorRequestHandler } from "express";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { UnauthorizedError } from "express-jwt";
 
+import { connectDB } from "./database";
 import postRoutes from "./routes/postRoutes";
 
 dotenv.config();
 
 const app = express();
-
-mongoose
-  .connect(process.env.MONGO_URI as string)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error(err));
+connectDB(); // Connect to MongoDB
 
 app.use(express.json());
 app.use("/api/posts", postRoutes);
