@@ -1,7 +1,5 @@
 import express from "express";
 
-import { checkJwt } from "../middlewares/auth";
-
 import {
   createPost,
   getAllPosts,
@@ -13,9 +11,6 @@ import {
 } from "../controllers/postController";
 
 const router = express.Router();
-
-// Apply the JWT middleware to all routes
-router.use(checkJwt);
 
 router.post("/", createPost);
 router.get("/", getAllPosts);
