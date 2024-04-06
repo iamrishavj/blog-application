@@ -53,10 +53,10 @@ export const getUserProfile = async (req: Request, res: Response) => {
 };
 
 export const updateUserProfile = async (req: Request, res: Response) => {
-  const { fullName, bio } = req.body;
+  const { username, fullName, bio } = req.body;
   const user = await User.findByIdAndUpdate(
     req.params.userId,
-    { fullName, bio },
+    { username, fullName, bio },
     { new: true }
   );
   if (!user) {
