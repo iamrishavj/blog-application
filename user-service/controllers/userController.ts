@@ -43,3 +43,24 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
     res.status(500).send("Server error");
   }
 };
+
+export const getUserProfile = async (req: Request, res: Response) => {
+  const user = await User.findById(req.params.userId);
+  if (!user) {
+    return res.status(404).send({ message: "User not found" });
+  }
+  res.send(user);
+};
+
+export const updateUserProfile = async (req: Request, res: Response) => {
+  const { fullName, bio } = req.body;
+  const user = await User.findByIdAndUpdate(
+    req.params.userId,
+    { fullName, bio },
+    { new: true }
+  );
+  if (!user) {
+    return res.status(404).send({ message: "User not found" });
+  }
+  res.send(user);
+};
