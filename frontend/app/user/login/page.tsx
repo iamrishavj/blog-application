@@ -1,3 +1,4 @@
+import { loginUser } from "@/actions/userActions";
 import LinkToRegister from "./linkToRegister";
 
 const LoginPage: React.FC = () => {
@@ -5,7 +6,7 @@ const LoginPage: React.FC = () => {
     <div className="flex justify-center items-center h-screen">
       <div className="w-64">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
-        <form className="space-y-4">
+        <form className="space-y-4" action={loginUser}>
           <div>
             <label htmlFor="email" className="block mb-1">
               Email

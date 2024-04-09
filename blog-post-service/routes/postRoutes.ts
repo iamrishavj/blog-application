@@ -1,7 +1,6 @@
 import express from "express";
 
 import {
-  getPosts,
   createPost,
   getAllPosts,
   getPostById,
@@ -13,7 +12,6 @@ import {
 
 const router = express.Router();
 
-router.get("/", getPosts);
 router.post("/", createPost);
 router.get("/", getAllPosts);
 router.get("/search", searchPosts);

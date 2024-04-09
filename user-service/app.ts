@@ -12,7 +12,7 @@ connectDB(); // Connect to MongoDB
 app.use(express.json()); // Middleware for parsing JSON bodies
 
 // Routes
-app.use("/api/users", userRoutes);
+app.use("/", userRoutes);
 
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

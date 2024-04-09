@@ -10,7 +10,7 @@ const app = express();
 connectDB(); // Connect to MongoDB
 
 app.use(express.json());
-app.use("/api/posts", postRoutes);
+app.use("/", postRoutes);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
