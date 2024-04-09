@@ -6,7 +6,7 @@ import { expressjwt as expressJwt } from "express-jwt";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // JWT validation middleware
 const jwtMiddleware = expressJwt({

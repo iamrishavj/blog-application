@@ -9,7 +9,7 @@ const LinkToRegister = () => {
       <a
         href="#"
         className="text-blue-500 hover:underline"
-        onClick={() => router.push("/register")}
+        onClick={() => router.push("/user/register")}
       >
         Register
       </a>

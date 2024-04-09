@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "@types/express-jwt": "^7.4.2",
     "@types/http-proxy-middleware": "^1.0.0",
     "@types/node": "^20.12.4",
+    "nodemon": "^3.1.0",
     "typescript": "^5.4.4"
   }
 }
