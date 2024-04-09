@@ -46,7 +46,9 @@ const RegisterPage: React.FC = () => {
           Register
         </button>
       </form>
-      {error && <p className="text-red-500">{error}</p>}
+      <div className="flex items-center justify-center">
+        {error && <p className="text-red-500">{error}</p>}
+      </div>
     </div>
   );
 };

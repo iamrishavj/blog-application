@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
 export async function registerUser(currentState: any, formData: FormData) {
   const response = await fetch(
@@ -23,7 +24,7 @@ export async function registerUser(currentState: any, formData: FormData) {
   return response.json().then((data) => data.message);
 }
 
-export async function loginUser(formData: FormData) {
+export async function loginUser(currentState: any, formData: FormData) {
   const response = await fetch(process.env.GATEWAY_URL + "/api/users/login", {
     method: "POST",
     headers: {
@@ -34,5 +35,12 @@ export async function loginUser(formData: FormData) {
       password: formData.get("password"),
     }),
   });
-  return response.json();
+  if (response.ok) {
+    const session = await response.json();
+    const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+    cookies().set("session", session, { expires, httpOnly: true });
+
+    redirect("/");
+  }
+  return response.json().then((data) => data.message);
 }

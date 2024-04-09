@@ -5,7 +5,7 @@ import Navbar from "./navbar";
 export default function Home() {
   return (
     <>
-      <Navbar isLoggedIn={true} />
+      <Navbar isLoggedIn={false} />
       All Blogs
     </>
   );

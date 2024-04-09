@@ -10,10 +10,10 @@ export const registerUser = async (
 ): Promise<void> => {
   try {
     const { username, email, password } = req.body;
-    const existingUser = await User.findOne({ email, username });
+    const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      res.status(400).json({ message: "User already exists" });
+      res.status(400).json({ message: "Email already exists" });
       return;
     }
 
@@ -41,7 +41,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
         process.env.JWT_SECRET as string,
         { expiresIn: "1h" }
       );
-      res.json({ token });
+      res.status(201).json({ token });
     } else {
       res.status(400).json({ message: "Invalid Credentials" });
     }

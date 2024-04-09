@@ -1,12 +1,16 @@
+"use client";
+
 import { loginUser } from "@/actions/userActions";
 import LinkToRegister from "./linkToRegister";
+import { useFormState } from "react-dom";
 
 const LoginPage: React.FC = () => {
+  const [error, wrappedLoginUser] = useFormState(loginUser, undefined);
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-64">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
-        <form className="space-y-4" action={loginUser}>
+        <form className="space-y-4" action={wrappedLoginUser}>
           <div>
             <label htmlFor="email" className="block mb-1">
               Email
@@ -14,6 +18,7 @@ const LoginPage: React.FC = () => {
             <input
               type="email"
               id="email"
+              name="email"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your email"
               required
@@ -26,6 +31,7 @@ const LoginPage: React.FC = () => {
             <input
               type="password"
               id="password"
+              name="password"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your password"
               required
@@ -39,6 +45,9 @@ const LoginPage: React.FC = () => {
           </button>
           <LinkToRegister />
         </form>
+        <div className="flex items-center justify-center">
+          {error && <p className="text-red-500 </div>mt-4">{error}</p>}
+        </div>
       </div>
     </div>
   );
