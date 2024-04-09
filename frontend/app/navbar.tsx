@@ -9,6 +9,9 @@ const Navbar = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
         </Link>
       ) : (
         <>
+          <Link href="/blog/create" className="text-lg mr-4">
+            Create Blog
+          </Link>
           <Link href="/my-blogs" className="text-lg mr-4">
             My Blogs
           </Link>

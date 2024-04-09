@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { setSession } from "@/lib/sessionHelper";
 
 export async function registerUser(currentState: any, formData: FormData) {
   const response = await fetch(
@@ -37,8 +38,8 @@ export async function loginUser(currentState: any, formData: FormData) {
   });
   if (response.ok) {
     const session = await response.json();
-    const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
-    cookies().set("session", session, { expires, httpOnly: true });
+
+    setSession(session.token);
 
     redirect("/");
   }
