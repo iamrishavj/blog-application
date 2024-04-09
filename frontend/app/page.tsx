@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "./navbar";
 
 export default function Home() {
   return (
     <>
-      <Link href="/">Hello World!</Link>
+      <Navbar isLoggedIn={true} />
+      All Blogs
     </>
   );
 }
