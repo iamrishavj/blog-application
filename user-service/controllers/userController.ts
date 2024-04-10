@@ -51,6 +51,20 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+export const verifyToken = async (req: Request, res: Response) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) {
+      return res.status(401).json({ message: "Token not found" });
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
+    res.json(decoded);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Token verification failed" });
+  }
+};
+
 export const getUserProfile = async (req: Request, res: Response) => {
   const user = await User.findById(req.params.userId);
   if (!user) {
